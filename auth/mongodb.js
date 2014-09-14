@@ -12,14 +12,14 @@ auth.register('mongodb', function (username, password, done) {
   
   MongoClient.connect(config.auth.dsn, function(err, db) {
     if(err) {
-      console.log(err);
       done(err, null);
       return
     };
     var col = db.collection('ftp');
 
     col.findOne({"username" : username }, function(col, user) {
-        console.log(user);
+        // TODO: Add bycrypt
+
         if(!user || user.password != password) {
             done(true, null);
             return;
