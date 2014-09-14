@@ -16,8 +16,7 @@
   "main": "./lib/nodeftpd",
   "scripts": {
     "start": "./bin/nodeftpd start",
-    "stop": "./bin/nodeftpd stop",
-    "preinstall": "./bin/install_check.sh"
+    "stop": "./bin/nodeftpd stop"
   },
   "repository": {
     "type": "git",
@@ -39,6 +38,7 @@
     "mongodb": "1.3.x",
     "commander": "2.0.x",
     "tmp": "0.0.x",
+    "mongodb": "1.4.10",
     "js-yaml": "2.1.x"
   },
   "devDependencies": {

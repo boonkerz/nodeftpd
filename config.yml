@@ -13,8 +13,9 @@ logging:
 passive_port_range: 40000-60000
 motd: 'NodeFTPD %pkg.version% Server (%os.hostname%)'
 auth:
-  provider: pam
+  provider: mongodb
   default_chroot: '~'
+  dsn: 'mongodb://172.17.0.18:27017/lunchr'
 tls:
   enabled: false
   key: ''

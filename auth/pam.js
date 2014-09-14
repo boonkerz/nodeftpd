@@ -16,7 +16,7 @@ auth.register('pam', function (username, password, done) {
     } else {
       var user    = unix.getUser({ username: username })[0];
       user.chroot = config.auth.default_chroot === '~' ? user.home : config.auth.default_chroot;
-
+console.log(user);
       done(err, user);
     }
   });
