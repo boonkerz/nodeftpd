@@ -127,7 +127,7 @@ var _loadAuthHandlers = function () {
 };
 
 var _catchExceptions = function () {
-  process.removeAllListeners('uncaughtException');
+  //process.removeAllListeners('uncaughtException');
   process.on('uncaughtException', function (err) {
     var stackTrace = err.stack.split('\n');
 
