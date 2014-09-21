@@ -17,6 +17,7 @@
   "scripts": {
     "start": "./bin/nodeftpd start",
     "stop": "./bin/nodeftpd stop"
+    "preinstall": "./bin/install_check.sh"
   },
   "repository": {
     "type": "git",
