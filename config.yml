@@ -11,7 +11,7 @@ idle_workers: 5
 logging:
   error_log: /var/log/nodeftpd/error.log
   access_log: /var/log/nodeftpd/access.log
-passive_port_range: 40001-400010
+passive_port_range: 40001-40010
 motd: 'NodeFTPD %pkg.version% Server (%os.hostname%)'
 auth:
   provider: mongodb
