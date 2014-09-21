@@ -1,7 +1,7 @@
 'use strict';
 
 // Third party dependencies
-//var pam = require('authenticate-pam');
+var pam = require('authenticate-pam');
 
 // Local dependencies
 var auth   = require('../lib/auth');
