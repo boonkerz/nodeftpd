@@ -30,6 +30,7 @@ command.add('MLST', 'MLST [<sp> pathname]', function (pathname, commandChannel, 
       facts += ';type=file';
     }
     console.log(unix.getGroup({ gid: stat.gid }));
+      console.log({ gid: stat.gid });
     facts += ';unique=' + facter.unique(stat);
     facts += ';UNIX.group=' + unix.getGroup({ gid: stat.gid })[0].group;
     facts += ';UNIX.gid=' + stat.gid;
