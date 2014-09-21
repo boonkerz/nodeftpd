@@ -73,7 +73,7 @@ command.add('PASV', 'PASV (returns address/port)', function (nil, commandChannel
     session.passiveMode.port = message.port;
     var port1 = Math.floor(message.port / 256);
     var port2 = message.port % 256;
-    var port  = config.listen.replace(/\./g, ',') + ',' + port1 + ',' + port2;
+    var port  = config.listenNat.replace(/\./g, ',') + ',' + port1 + ',' + port2;
 
     // Bind to the port we're using for passive mode
     dataChannel.create(session, function () {
