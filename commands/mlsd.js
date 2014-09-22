@@ -21,7 +21,7 @@ command.add('MLSD', 'MLSD [<sp> pathname]', function (pathname, commandChannel, 
       if (dataChannel.isReady()) {
         commandChannel.write(150, 'Opening ASCII mode data connection for MLSD');
       } else {
-        commandChannel.write(425, 'Unable to build data connection: Invalid argument');
+        commandChannel.write(150, 'Unable to build data connection: Invalid argument');
       }
 
       dataChannel.onReady(function (socket, done) {
