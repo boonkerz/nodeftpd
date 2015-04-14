@@ -15,7 +15,7 @@ motd: 'NodeFTPD %pkg.version% Server (%os.hostname%)'
 auth:
   provider: mongodb
   default_chroot: '~'
-  dsn: 'mongodb://mongodb:27017/lunchr'
+  dsn: 'mongodb://172.17.0.2:27017/lunchr'
 tls:
   enabled: false
   key: ''

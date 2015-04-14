@@ -74,17 +74,20 @@ command.add('RETR', 'RETR <sp> pathname', function (pathname, commandChannel, se
   var absolutePath = fs.toAbsolute(pathname, session.cwd);
   var stream;
 
-  // Are we resuming a file transfer?
-  if (session.restByteCount === 0) {
-    stream = fs.createReadStream(absolutePath, { flags: 'r' });
-  } else {
-    stream = fs.createReadStream(absolutePath, { flags: 'r', start: session.restByteCount });
-    session.restByteCount = 0;
-  }
-
-  // Set the encoding
   if (!session.binary) {
-    stream.setEncoding('ascii');
+    if (session.restByteCount === 0) {
+      stream = fs.createReadStream(absolutePath, {flags: 'r', encoding: 'utf-8'});
+    } else {
+      stream = fs.createReadStream(absolutePath, {flags: 'r', encoding: 'utf-8', start: session.restByteCount});
+      session.restByteCount = 0;
+    }
+  }else{
+    if (session.restByteCount === 0) {
+      stream = fs.createReadStream(absolutePath, {flags: 'r'});
+    } else {
+      stream = fs.createReadStream(absolutePath, {flags: 'r', start: session.restByteCount});
+      session.restByteCount = 0;
+    }
   }
 
   // Catch errors
@@ -96,11 +99,7 @@ command.add('RETR', 'RETR <sp> pathname', function (pathname, commandChannel, se
   fs.stat(absolutePath, function (err, stats) {
     var size = stats.size + ' bytes';
 
-    if (dataChannel.isReady()) {
       commandChannel.write(150, 'Opening ' + session.transferType + ' mode data connection for ' + pathname + ' (' + size + ')');
-    } else {
-      commandChannel.write(425, 'Unable to build data connection: Invalid argument');
-    }
 
     // Create a data channel to initiate the transfer
     dataChannel.onReady(function (socket, done) {

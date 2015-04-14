@@ -39,9 +39,9 @@ command.add('STOR', 'STOR <sp> pathname', function (pathname, commandChannel, se
 
   // Are we resuming a failed upload (the client issued a REST command)
   if (session.restByteCount === 0) {
-    stream = fs.createWriteStream(absolutePath, { flags: 'w' });
+    stream = fs.createWriteStream(absolutePath, { flags: 'w', encoding: 'utf-8' });
   } else {
-    stream = fs.createWriteStream(absolutePath, { flags: 'a+', start: session.restByteCount });
+    stream = fs.createWriteStream(absolutePath, { flags: 'a+', encoding: 'utf-8', start: session.restByteCount });
     session.restByteCount = 0;
   }
 

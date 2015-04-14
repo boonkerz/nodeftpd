@@ -96,6 +96,7 @@ var path = require('path');
  * client.
  */
 command.add('LIST', 'LIST [<sp> pathname]', function (pathname, commandChannel, session) {
+	pathname = pathname.replace("-l","").replace("-al");
   fs.readdir(fs.toAbsolute(pathname, session.cwd), function (err, files) {
     if (err) {
       commandChannel.write(550, fs.errorMessage(err, pathname));
@@ -131,8 +132,9 @@ command.add('LIST', 'LIST [<sp> pathname]', function (pathname, commandChannel, 
           eplfLine += '\r\n';
 
           socket.write(eplfLine);
+console.log(eplfLine);
         }
-
+	
         commandChannel.write(226, 'Directory sent OK.');
 
         done();
